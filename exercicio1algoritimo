@@ -1,0 +1,82 @@
+algoritimo.class.php
+
+<?php
+class Algoritimo{
+
+	private $b;
+	private $c;
+
+	public function getB(){
+		return $this->b;
+	}
+
+	public function setB($b){
+		$this->b = $b;
+	}
+
+	public function getC(){
+		return $this->c;
+	}
+
+	public function setC($c){
+		$this->c = $c;
+	}
+
+	public function calcularHip() : float {
+		return sqrt(pow($this->b,2)+ pow($this->c,2));
+	}
+
+}//fecha class
+
+?>
+
+controle.php
+
+<?php
+include 'algoritimo.class.php';
+
+$p = new Algoritimo();
+
+$p->setB($_POST['txtb']);
+$p->setC($_POST['txtc']);
+
+echo '<p>B: '.$p->getB().
+	'<br>C: '.$p->getC().
+	'<br>Hipotenusa: '.$p->calcularHip().'</p>';
+
+
+?>
+
+controle.php
+
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title> Algoritimo </title>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1,maximum-scale=1" name="viewport">
+	</head>
+
+	<body>
+			<h1> Algoritmo </h1>
+		
+		<form name="alg" action="controle.php" method="post">
+
+			<div>
+			<input type="text" placeholder="b" name="txtb" id="txtb">
+			</div>
+
+			<div>
+			<input type="text" placeholder="c" name="txtc" id="txtc">
+			</div>
+
+			<div>
+			<input type="submit" value="Calcular">
+			</div>
+			
+
+		</form>
+
+	</body>
+
+</html>
