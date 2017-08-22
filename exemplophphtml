@@ -1,0 +1,88 @@
+pessoa.class.php
+
+<?php
+class Pessoa{
+
+	private $nome;
+	private $idade;
+
+	public function getNome(){
+		return $this->nome;
+	}
+	public function setNome($nome){
+		$this->nome = $nome;
+	}
+
+	public function getIdade(){
+		return $this->idade;
+	}
+	public function setIdade($idade){
+		$this->idade = $idade;
+	}
+
+	public function calcularIdadeMeses() :int{
+		return $this->idade * 12;
+	}
+
+	public function calcularIdadeSemanas() :int{
+		return $this->idade * 52;
+	}
+
+	public function calcularIdadeDias() :int{
+		return $this->idade * 365;
+	}
+	
+
+}//fecha class
+
+?>
+
+controle.php
+
+<?php
+include 'pessoa.class.php';
+
+$p = new Pessoa();
+
+$p->setNome($_POST['txtnome']);
+$p->setIdade($_POST['txtidade']);
+
+echo '<p>Nome: '.$p->getNome().
+	 '<br>Idade: '.$p->getIdade().
+	 '<br>Idade em Meses: '.$p->calcularIdadeMeses().
+	 '<br>Idade em Semanas: '.$p->calcularIdadeSemanas().
+	 '<br>Idade em Dias: '.$p->calcularIdadeDias().'</p>';
+
+?>
+
+index.html
+
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title> Exemplo Pessoa </title>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1,maximum-scale=1" name="viewport">
+	</head>
+
+	<body>
+		<h1> Cadastro de Pessoa </h1>
+
+		<form name="cadpessoa" action="controle.php" method="post"> 
+			<div>
+			<input type="text" placeholder="Nome" name="txtnome" id="txtnome">
+			</div>
+
+			<div>
+			<input type="text" placeholder="Idade" name="txtidade" id="txtidade">
+			</div>
+
+			<div>
+			<input type="submit" value="Cadastrar">
+			<input type="reset" value="Limpar">
+			</div>
+		</form>
+
+	</body>
+
+</html>
